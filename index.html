@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Serif KR','Malgun Gothic',serif;background:#fdf8f2;color:#3a2e28;max-width:480px;margin:0 auto;overflow-x:hidden}
+body{font-family:'Noto Serif KR','Malgun Gothic',serif;background:#866e51;color:#3a2e28;max-width:480px;margin:0 auto;overflow-x:hidden}
 
 /* ===== INTRO SCREEN (typing animation) ===== */
 #intro-screen{
@@ -332,8 +332,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
     {id:'tl1',text:'김정숙님의',speed:120},
     {id:'tl2',text:'고희연에',speed:120},
     {id:'tl3',text:'초대합니다',speed:120},
-    {id:'tl4',text:'6월 20일 토요일 오후 1시',speed:60},
-    {id:'tl5',text:'2026년',speed:80}
+    {id:'tl4',text:'2026년 6월 13일 토요일 오후 1시',speed:60}
+    // {id:'tl5',text:'2026년',speed:80}
   ];
 
   function runLine(idx){
@@ -399,7 +399,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 function copyAccount(num){navigator.clipboard.writeText(num).then(function(){showToast('계좌번호가 복사되었습니다.')})}
 function copyLink(){navigator.clipboard.writeText(location.href).then(function(){showToast('링크가 복사되었습니다.')})}
 function shareKakao(){
-  if(navigator.share){navigator.share({title:'김정숙님의 고희연에 초대합니다',text:'2026년 6월 20일 토요일 오후 1시 플로렌스 오목교점 8층 카라홀',url:location.href})}
+  if(navigator.share){navigator.share({title:'김정숙님의 고희연에 초대합니다',text:'2026년 6월 13일 토요일 오후 1시 라마다 플라자 충장 호텔 3층 반르시엔',url:location.href})}
   else{copyLink()}
 }
 function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}

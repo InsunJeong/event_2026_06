@@ -2,56 +2,62 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width">
+<meta name="format-detection" content="telephone=no">
 <title>김정숙님의 고희연에 초대합니다</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Serif KR','Malgun Gothic',serif;background:#866e51;color:#3a2e28;max-width:480px;margin:0 auto;overflow-x:hidden}
+/* ===== Reset & Base (원본 동일) ===== */
+html{box-sizing:border-box;-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+html,body{width:100%;height:100%;margin:0;background-color:#fff!important;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scrollbar-width:none!important;-ms-overflow-style:none!important}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+strong,b{font-weight:700}
+body{font-family:'KoPubWorldDotum','Noto Serif KR','Malgun Gothic',sans-serif;color:#3a2e28;max-width:480px;margin:0 auto;overflow-x:hidden}
 
-/* ===== INTRO SCREEN (typing animation) ===== */
+/* ===== INTRO SCREEN (원본: typing, theme a, color gradient) ===== */
 #intro-screen{
-  position:fixed;inset:0;z-index:1000;
+  position:fixed;inset:0;z-index:9999;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:linear-gradient(160deg,#f9e8d0 0%,#f3d5b5 50%,#e8c49a 100%);
+  background:linear-gradient(to bottom,#FFF9F6 20%,#F2C9C5 100%);
   transition:opacity 0.8s ease,transform 0.8s ease;
 }
 #intro-screen.hide{opacity:0;pointer-events:none;transform:translateY(-30px)}
-#intro-screen::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle at 20% 20%,rgba(255,200,120,.3) 0%,transparent 50%),
-  radial-gradient(circle at 80% 80%,rgba(255,160,80,.2) 0%,transparent 50%);
+.intro-lines{position:relative;z-index:1;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px}
+.intro-line{
+  font-family:'Noto Serif KR',serif;
+  font-size:26px;font-weight:700;color:#BD7B7B;
+  line-height:1.8;letter-spacing:2px;min-height:1.8em;opacity:0;
 }
-.intro-deco{font-size:22px;letter-spacing:8px;color:#c8864a;margin-bottom:24px;position:relative;z-index:1;opacity:0;transition:opacity .6s}
-.intro-deco.show{opacity:1}
-.intro-lines{position:relative;z-index:1;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.intro-line{font-size:28px;font-weight:700;color:#5a3820;line-height:1.8;letter-spacing:2px;min-height:1.8em;font-family:'Noto Serif KR',serif;opacity:0}
-.intro-line.sub{font-size:16px;font-weight:400;color:#8a6040;letter-spacing:1px;margin-top:8px}
+.intro-line.sub{font-size:15px;font-weight:400;color:#BD7B7B;letter-spacing:1px;margin-top:12px;opacity:0}
 .intro-line.show{opacity:1}
-.typing-cursor{display:inline-block;width:2px;height:1.1em;background:#c8864a;vertical-align:middle;margin-left:2px;animation:blink .8s step-end infinite}
+.typing-cursor{display:inline-block;width:2px;height:1.1em;background:#BD7B7B;vertical-align:middle;margin-left:2px;animation:blink .8s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-
-/* petals */
-.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:fall linear infinite;pointer-events:none}
-@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:.8}100%{transform:translateY(120px) rotate(360deg);opacity:0}}
 
 /* ===== INVITATION CONTENT ===== */
 #invitation{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
 #invitation.show{opacity:1;transform:translateY(0)}
 
-/* hero */
-.hero{position:relative;background:linear-gradient(160deg,#f9e8d0 0%,#f3d5b5 50%,#e8c49a 100%);padding:48px 24px;text-align:center;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(255,200,120,.3) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,160,80,.2) 0%,transparent 50%)}
-.hero-deco{font-size:22px;letter-spacing:8px;color:#c8864a;margin-bottom:12px;position:relative}
-.hero h1{font-size:26px;font-weight:700;line-height:1.6;color:#5a3820;position:relative}
-.hero h1 span{display:block;font-size:18px;font-weight:400;color:#8a6040;margin-top:8px}
-.hero-date{margin-top:24px;font-size:15px;color:#7a5030;line-height:1.8;position:relative}
-.hero-date strong{font-size:17px;color:#5a3820}
+/* hero (원본 template c 스타일) */
+.hero{
+  position:relative;
+  background:linear-gradient(to bottom,#FFF9F6 20%,#F2C9C5 100%);
+  padding:48px 24px;text-align:center;overflow:hidden;
+}
+.hero h1{
+  font-family:'Noto Serif KR',serif;
+  font-size:26px;font-weight:700;line-height:1.6;color:#BD7B7B;position:relative;
+}
+.hero h1 span{display:block;font-size:16px;font-weight:400;color:#BD7B7B;margin-top:12px}
+.hero-venue{margin-top:8px;font-size:14px;color:#BD7B7B;position:relative}
+
+/* date image */
+.date-image{width:100%;max-width:400px;margin:0 auto;display:block;border-radius:0}
 
 /* sections */
-section{padding:36px 24px;border-bottom:1px solid #ecdcc8}
-.section-title{font-size:13px;font-weight:600;letter-spacing:3px;color:#c8864a;text-align:center;margin-bottom:20px}
+section{padding:36px 24px;border-bottom:1px solid #f0e0e0;background:#fff}
+.section-title{font-size:13px;font-weight:600;letter-spacing:3px;color:#BD7B7B;text-align:center;margin-bottom:20px}
 
 /* invite text */
 .invite-text{font-size:15px;line-height:2.2;text-align:center;color:#4a3828;word-break:keep-all}
@@ -60,8 +66,8 @@ section{padding:36px 24px;border-bottom:1px solid #ecdcc8}
 .invite-names .role{color:#a07050;font-size:12px}
 
 /* date */
-.date-section{background:#fff9f2}
-.date-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(180,120,60,.1);text-align:center}
+.date-section{background:#fff}
+.date-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(180,120,60,.08);text-align:center}
 .date-main{font-size:20px;font-weight:700;color:#5a3820;margin-bottom:4px}
 .date-sub{font-size:14px;color:#8a6040;margin-bottom:20px}
 .calendar{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px}
@@ -71,20 +77,20 @@ section{padding:36px 24px;border-bottom:1px solid #ecdcc8}
 .calendar td{padding:6px 0;text-align:center;color:#5a3820}
 .calendar td:first-child{color:#e05050}
 .calendar td:last-child{color:#5080e0}
-.calendar td.today{background:#c8864a;color:#fff!important;border-radius:50%;font-weight:700}
+.calendar td.today{background:#BD7B7B;color:#fff!important;border-radius:50%;font-weight:700}
 .countdown{display:flex;justify-content:center;gap:12px;margin-top:4px}
 .countdown-item{text-align:center}
-.countdown-num{display:block;font-size:28px;font-weight:700;color:#c8864a;line-height:1}
+.countdown-num{display:block;font-size:28px;font-weight:700;color:#BD7B7B;line-height:1}
 .countdown-label{font-size:11px;color:#a07050;margin-top:4px}
-.countdown-sep{font-size:24px;color:#c8864a;align-self:flex-start;padding-top:4px}
+.countdown-sep{font-size:24px;color:#BD7B7B;align-self:flex-start;padding-top:4px}
 .countdown-msg{margin-top:12px;font-size:13px;color:#8a6040}
-.countdown-msg strong{color:#c8864a}
+.countdown-msg strong{color:#BD7B7B}
 
 /* map */
 .map-address{text-align:center;font-size:14px;color:#5a3820;line-height:1.8;margin-bottom:16px}
 .map-address strong{font-size:16px}
 .map-address .tel{color:#8a6040;font-size:13px}
-.map-placeholder{width:100%;height:200px;background:#e8ddd0;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#a07050;font-size:13px;margin-bottom:16px;overflow:hidden;position:relative}
+.map-placeholder{width:100%;height:200px;background:#e8ddd0;border-radius:12px;overflow:hidden;position:relative;margin-bottom:16px}
 .map-placeholder iframe{width:100%;height:100%;border:none;border-radius:12px}
 .map-nav-btns{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
 .map-nav-btn{display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;border:1px solid #ddd;background:#fff;font-size:13px;color:#5a3820;cursor:pointer;text-decoration:none}
@@ -93,49 +99,49 @@ section{padding:36px 24px;border-bottom:1px solid #ecdcc8}
 .dot-tmap{background:#e8002d}
 .dot-kakao{background:#fee500;color:#3c1e1e!important}
 .transport-list{display:flex;flex-direction:column;gap:12px}
-.transport-item{display:flex;gap:12px;align-items:flex-start;background:#fff9f2;border-radius:10px;padding:14px}
-.transport-icon{width:36px;height:36px;border-radius:50%;background:#f3d5b5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.transport-item{display:flex;gap:12px;align-items:flex-start;background:#fdf6f6;border-radius:10px;padding:14px}
+.transport-icon{width:36px;height:36px;border-radius:50%;background:#f2d5d5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .transport-info strong{display:block;font-size:14px;color:#5a3820;margin-bottom:4px}
 .transport-info p{font-size:13px;color:#8a6040;line-height:1.6}
 
 /* account */
-.account-section{background:#fff9f2}
+.account-section{background:#fdf6f6}
 .account-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(180,120,60,.08)}
 .account-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0e4d4}
 .account-row:last-child{border-bottom:none}
 .account-name{font-size:15px;font-weight:600;color:#5a3820}
 .account-bank{font-size:13px;color:#8a6040;margin-top:2px}
 .account-num{font-size:14px;color:#5a3820;font-family:monospace}
-.copy-btn{padding:6px 14px;border-radius:8px;border:1px solid #c8864a;background:#fff;color:#c8864a;font-size:12px;cursor:pointer}
-.copy-btn:active{background:#f3d5b5}
+.copy-btn{padding:6px 14px;border-radius:8px;border:1px solid #BD7B7B;background:#fff;color:#BD7B7B;font-size:12px;cursor:pointer}
+.copy-btn:active{background:#f2d5d5}
 
 /* letter */
 .letter-section{text-align:center}
 .letter-icon{font-size:40px;margin-bottom:12px}
 .letter-desc{font-size:14px;color:#7a5030;line-height:2;margin-bottom:20px}
-.btn-primary{display:inline-block;padding:13px 32px;background:linear-gradient(135deg,#c8864a,#e8a060);color:#fff;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(200,134,74,.35)}
+.btn-primary{display:inline-block;padding:13px 32px;background:linear-gradient(135deg,#BD7B7B,#d4a0a0);color:#fff;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(189,123,123,.35)}
 
 /* gift */
 .gift-section{text-align:center}
 .gift-icon{font-size:40px;margin-bottom:12px}
 .gift-desc{font-size:14px;color:#7a5030;line-height:2;margin-bottom:20px}
-.btn-secondary{display:inline-block;padding:13px 32px;background:#fff;color:#c8864a;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid #c8864a;cursor:pointer}
+.btn-secondary{display:inline-block;padding:13px 32px;background:#fff;color:#BD7B7B;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid #BD7B7B;cursor:pointer}
 
 /* share */
-.share-section{text-align:center;background:#fff9f2}
+.share-section{text-align:center;background:#fdf6f6}
 .share-btns{display:flex;gap:12px;justify-content:center}
 .share-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;border:1px solid #ddd;background:#fff;font-size:14px;color:#5a3820;cursor:pointer}
 .kakao-share{background:#fee500;border-color:#fee500;color:#3c1e1e}
 .share-icon{font-size:18px}
 
 /* contact */
-.contact-btn{display:block;width:fit-content;margin:20px auto 0;padding:12px 28px;background:#fff;border:1px solid #c8864a;border-radius:30px;color:#c8864a;font-size:14px;cursor:pointer;text-decoration:none}
+.contact-btn{display:block;width:fit-content;margin:20px auto 0;padding:12px 28px;background:#fff;border:1px solid #BD7B7B;border-radius:30px;color:#BD7B7B;font-size:14px;cursor:pointer;text-decoration:none}
 
 /* footer */
 footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 
 /* toast */
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(60,40,20,.85);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;opacity:0;transition:all .3s;pointer-events:none;z-index:999}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(60,40,20,.85);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;opacity:0;transition:all .3s;pointer-events:none;z-index:9999}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* scroll reveal */
@@ -147,14 +153,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 
 <!-- ===== INTRO TYPING SCREEN ===== -->
 <div id="intro-screen">
-  <div id="intro-petals"></div>
-  <div class="intro-deco" id="intro-deco">&#10022; &#10022; &#10022;</div>
   <div class="intro-lines">
     <div class="intro-line" id="tl1"></div>
     <div class="intro-line" id="tl2"></div>
     <div class="intro-line" id="tl3"></div>
     <div class="intro-line sub" id="tl4"></div>
-    <div class="intro-line sub" id="tl5"></div>
   </div>
 </div>
 
@@ -163,14 +166,11 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 
 <!-- Hero -->
 <div class="hero">
-  <div class="hero-deco">&#10022; &#10022; &#10022;</div>
   <h1>
     김정숙님의<br>고희연에<br>초대합니다
     <span>6월 13일 토요일 오후 1시</span>
   </h1>
-  <div class="hero-date">
-    <strong>라마다 플라자 충장 호텔 3층 반르시엔</strong>
-  </div>
+  <div class="hero-venue">라마다 플라자 충장 호텔 3층 반르시엔</div>
 </div>
 
 <!-- 모시는 글 -->
@@ -189,23 +189,23 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
       <span><span class="role">며느리</span> 김한올</span>
     </div>
   </div>
-  <a href="tel:02-1234-5678" class="contact-btn">&#128222; 연락하기</a>
+  <a href="tel:062-717-1080" class="contact-btn">📞 연락하기</a>
 </section>
 
 <!-- 행사일 -->
 <section class="date-section reveal">
   <div class="section-title">행사일</div>
   <div class="date-card">
-    <div class="date-main">6월 13일 토요일 오후 1시</div>
-    <div class="date-sub">라마다 플라자 충장 호텔 3층 반르시엔<</div>
+    <div class="date-main">2026년 6월 13일 토요일 오후 1시</div>
+    <div class="date-sub">라마다 플라자 충장 호텔 3층 반르시엔</div>
     <table class="calendar">
       <thead>
         <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
       </thead>
       <tbody>
         <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
-        <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
-        <tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td class="today">20</td></tr>
+        <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td class="today">13</td></tr>
+        <tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr>
         <tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
         <tr><td>28</td><td>29</td><td>30</td><td></td><td></td><td></td><td></td></tr>
       </tbody>
@@ -224,29 +224,29 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 </section>
 
 <!-- 오시는 길 -->
-<section class="map-section reveal">
+<section class="reveal">
   <div class="section-title">오시는 길</div>
   <div class="map-address">
-    <strong>라마다 플라자 충장 호텔 3층 반르시엔<</strong><br>
+    <strong>라마다 플라자 충장 호텔 3층 반르시엔</strong><br>
     광주광역시 동구 천변우로 369 3층<br>
     <span class="tel">Tel. 062-717-1080</span>
   </div>
   <div class="map-placeholder">
-    <iframe src="https://map.naver.com/p/embed?lat=37.5232920131718&lng=126.885222271529&zoom=16&type=normal" title="플로렌스 오목교점 지도" allowfullscreen></iframe>
+    <iframe src="https://map.naver.com/p/embed?lat=35.1468&lng=126.9157&zoom=16&type=normal" title="라마다 플라자 충장 호텔 지도" allowfullscreen></iframe>
   </div>
   <div class="map-nav-btns">
-    <a class="map-nav-btn" href="nmap://place?lat=37.5232920131718&lng=126.885222271529&name=%ED%94%8C%EB%A1%9C%EB%A0%8C%EC%8A%A4%EC%98%A4%EB%AA%A9%EA%B5%90%EC%A0%90&appname=birthday-card" target="_blank"><span class="dot dot-naver">N</span> 네이버지도</a>
-    <a class="map-nav-btn" href="tmap://route?goalname=%ED%94%8C%EB%A1%9C%EB%A0%8C%EC%8A%A4%EC%98%A4%EB%AA%A9%EA%B5%90%EC%A0%90&goalx=126.885222271529&goaly=37.5232920131718" target="_blank"><span class="dot dot-tmap">T</span> 티맵</a>
-    <a class="map-nav-btn" href="kakaomap://route?ep=37.5232920131718,126.885222271529&by=CAR" target="_blank"><span class="dot dot-kakao">K</span> 카카오내비</a>
+    <a class="map-nav-btn" href="nmap://place?lat=35.1468&lng=126.9157&name=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&appname=birthday-card" target="_blank"><span class="dot dot-naver">N</span> 네이버지도</a>
+    <a class="map-nav-btn" href="tmap://route?goalname=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&goalx=126.9157&goaly=35.1468" target="_blank"><span class="dot dot-tmap">T</span> 티맵</a>
+    <a class="map-nav-btn" href="kakaomap://route?ep=35.1468,126.9157&by=CAR" target="_blank"><span class="dot dot-kakao">K</span> 카카오내비</a>
   </div>
   <div class="transport-list">
     <div class="transport-item">
-      <div class="transport-icon">&#128647;</div>
-      <div class="transport-info"><strong>지하철</strong><p>지하철 5호선 양평역 2번출구 직진 3분거리</p></div>
+      <div class="transport-icon">🚇</div>
+      <div class="transport-info"><strong>지하철</strong><p>광주 1호선 금남로4가역 3번출구 도보 5분</p></div>
     </div>
     <div class="transport-item">
-      <div class="transport-icon">&#128652;</div>
-      <div class="transport-info"><strong>버스</strong><p>관악고등학교 정류소 하차<br>640, 650, 5012, 6630번 버스</p></div>
+      <div class="transport-icon">🚌</div>
+      <div class="transport-info"><strong>버스</strong><p>충장로 정류소 하차</p></div>
     </div>
   </div>
 </section>
@@ -269,7 +269,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <!-- 감사편지 -->
 <section class="letter-section reveal">
   <div class="section-title">감사편지</div>
-  <div class="letter-icon">&#128140;</div>
+  <div class="letter-icon">💌</div>
   <p class="letter-desc">가족을 위하여 묵묵히 걸어오신 여정에<br>존경과 감사의 마음을 전하세요.</p>
   <button class="btn-primary" onclick="alert('편지쓰기 기능입니다.')">편지쓰기</button>
 </section>
@@ -277,7 +277,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <!-- 축하 선물 -->
 <section class="gift-section reveal">
   <div class="section-title">축하 선물 보내기</div>
-  <div class="gift-icon">&#127873;</div>
+  <div class="gift-icon">🎁</div>
   <p class="gift-desc">축하의 마음을 전해보세요.</p>
   <button class="btn-secondary" onclick="alert('선물 보내기 기능입니다.')">선물 보내기</button>
 </section>
@@ -286,8 +286,8 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <section class="share-section reveal">
   <div class="section-title">공유하기</div>
   <div class="share-btns">
-    <button class="share-btn kakao-share" onclick="shareKakao()"><span class="share-icon">&#128172;</span> 카카오톡 공유하기</button>
-    <button class="share-btn" onclick="copyLink()"><span class="share-icon">&#128279;</span> 링크 복사하기</button>
+    <button class="share-btn kakao-share" onclick="shareKakao()"><span class="share-icon">💬</span> 카카오톡 공유하기</button>
+    <button class="share-btn" onclick="copyLink()"><span class="share-icon">🔗</span> 링크 복사하기</button>
   </div>
 </section>
 
@@ -299,16 +299,6 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 
 <script>
 (function(){
-  /* ── Intro petals ── */
-  var petalColors=['#f9c8a0','#f5b08a','#fad4b4','#e8a878','#fce8d0'];
-  var pw=document.getElementById('intro-petals');
-  for(var i=0;i<18;i++){
-    var p=document.createElement('div');
-    p.className='petal';
-    p.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;background:'+petalColors[Math.floor(Math.random()*petalColors.length)]+';width:'+(6+Math.random()*6)+'px;height:'+(6+Math.random()*6)+'px;animation-duration:'+(2.5+Math.random()*3)+'s;animation-delay:'+Math.random()*4+'s;transform:rotate('+Math.random()*360+'deg);';
-    pw.appendChild(p);
-  }
-
   /* ── Typing engine ── */
   function typeText(el,text,speed,cb){
     el.classList.add('show');
@@ -333,12 +323,10 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
     {id:'tl2',text:'고희연에',speed:120},
     {id:'tl3',text:'초대합니다',speed:120},
     {id:'tl4',text:'2026년 6월 13일 토요일 오후 1시',speed:60}
-    // {id:'tl5',text:'2026년',speed:80}
   ];
 
   function runLine(idx){
     if(idx>=lines.length){
-      /* typing done -> transition to invitation */
       setTimeout(showInvitation,800);
       return;
     }
@@ -354,11 +342,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
     setTimeout(function(){intro.style.display='none'},900);
   }
 
-  /* start after 500ms */
-  setTimeout(function(){
-    document.getElementById('intro-deco').classList.add('show');
-    setTimeout(function(){runLine(0)},400);
-  },500);
+  setTimeout(function(){runLine(0)},500);
 
   /* ── Scroll reveal ── */
   var observer=new IntersectionObserver(function(entries){
@@ -370,7 +354,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 
   /* ── Countdown ── */
   function updateCountdown(){
-    var target=new Date('2026-06-20T13:00:00+09:00');
+    var target=new Date('2026-06-13T13:00:00+09:00');
     var now=new Date();
     var diff=target-now;
     if(diff<=0){

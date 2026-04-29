@@ -4,176 +4,172 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width">
 <meta name="format-detection" content="telephone=no">
-<title>김정숙님의 고희연에 초대합니다</title>
+<title>김덕례님의 구순연에 초대합니다</title>
 <style>
-/* ===== Font faces (로컬) ===== */
+/* ===== Fonts ===== */
 @font-face{font-family:'JSArirangHON';src:url('static/fonts/JSArirangHON.woff2') format('woff2');font-display:swap}
 @font-face{font-family:'KoPubWorldDotum';src:url('static/fonts/KoPubWorld-Dotum.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'KoPubWorldDotum';src:url('static/fonts/KoPubWorld-Dotum-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
-@font-face{font-family:'GowunBatang';src:url('static/fonts/GowunBatang-Regular.woff2') format('woff2');font-display:swap}
-/* ===== Reset & Base (원본 동일) ===== */
-html{box-sizing:border-box;-webkit-text-size-adjust:100%}
-*,*::before,*::after{box-sizing:inherit}
-html,body{width:100%;height:100%;margin:0;background-color:#fff!important;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scrollbar-width:none!important;-ms-overflow-style:none!important}
-html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
-strong,b{font-weight:700}
-body{font-family:'KoPubWorldDotum','Malgun Gothic',sans-serif;color:#3a2e28;max-width:480px;margin:0 auto;overflow-x:hidden}
+@font-face{font-family:'GowunBatang';src:url('static/fonts/GowunBatang-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'GowunBatang';src:url('static/fonts/GowunBatang-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 
-/* ===== INTRO SCREEN (원본: typing, theme a, color gradient) ===== */
-#intro-screen{
+/* ===== Reset ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#fff;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scrollbar-width:none!important}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}
+body{font-family:'GowunBatang','KoPubWorldDotum',sans-serif;font-size:16px;color:#333;max-width:480px;margin:0 auto;overflow-x:hidden;line-height:1.6}
+
+/* ===== Intro (shining type, theme c) ===== */
+#intro{
   position:fixed;inset:0;z-index:9999;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:linear-gradient(to bottom,#FFF9F6 20%,#F2C9C5 100%);
-  transition:opacity 0.8s ease,transform 0.8s ease;
+  opacity:1;transition:opacity 1s ease;
 }
-#intro-screen.hide{opacity:0;pointer-events:none;transform:translateY(-30px)}
-.intro-lines{position:relative;z-index:1;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px}
-.intro-line{
-  font-family:'JSArirangHON','KoPubWorldDotum',serif;
-  font-size:26px;font-weight:700;color:#BD7B7B;
-  line-height:1.8;letter-spacing:2px;min-height:1.8em;opacity:0;
+#intro.hide{opacity:0;pointer-events:none}
+#intro .top-text{
+  font-family:'JSArirangHON',serif;font-size:28px;color:#BD7B7B;
+  opacity:0;transform:translateY(20px);
+  transition:opacity 1s ease,transform 1s ease;
+  margin-bottom:8px;
 }
-.intro-line.sub{font-size:15px;font-weight:400;color:#BD7B7B;letter-spacing:1px;margin-top:12px;opacity:0}
-.intro-line.show{opacity:1}
-.typing-cursor{display:inline-block;width:2px;height:1.1em;background:#BD7B7B;vertical-align:middle;margin-left:2px;animation:blink .8s step-end infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+#intro .bottom-text{
+  font-family:'JSArirangHON',serif;font-size:28px;color:#BD7B7B;
+  opacity:0;transform:translateY(20px);
+  transition:opacity 1s ease 0.5s,transform 1s ease 0.5s;
+}
+#intro .shine{
+  position:absolute;width:200%;height:200%;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,0.6) 0%,transparent 70%);
+  opacity:0;animation:shineAnim 3s ease-in-out 1s forwards;
+  pointer-events:none;
+}
+@keyframes shineAnim{0%{opacity:0;transform:scale(0.5)}50%{opacity:0.8}100%{opacity:0;transform:scale(2)}}
+#intro.active .top-text,#intro.active .bottom-text{opacity:1;transform:translateY(0)}
 
-/* ===== INVITATION CONTENT ===== */
-#invitation{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
-#invitation.show{opacity:1;transform:translateY(0)}
+/* ===== Main content ===== */
+#content{opacity:0;transition:opacity 1s ease}
+#content.show{opacity:1}
 
-/* hero (원본 template c 스타일) */
+/* Hero (template d) */
 .hero{
-  position:relative;
   background:linear-gradient(to bottom,#FFF9F6 20%,#F2C9C5 100%);
-  padding:48px 24px;text-align:center;overflow:hidden;
+  padding:60px 24px 48px;text-align:center;position:relative;
 }
-.hero h1{
-  font-family:'JSArirangHON','KoPubWorldDotum',serif;
-  font-size:26px;font-weight:700;line-height:1.6;color:#BD7B7B;position:relative;
-}
-.hero h1 span{display:block;font-size:16px;font-weight:400;color:#BD7B7B;margin-top:12px}
-.hero-venue{margin-top:8px;font-size:14px;color:#BD7B7B;position:relative}
+.hero h1{font-family:'JSArirangHON',serif;font-size:28px;color:#BD7B7B;line-height:1.7;font-weight:400}
+.hero .date-info{font-size:15px;color:#BD7B7B;margin-top:16px}
+.hero .venue-info{font-size:14px;color:#BD7B7B;margin-top:4px}
 
-/* date image */
-.date-image{width:100%;max-width:400px;margin:0 auto;display:block;border-radius:0}
+/* Section */
+section{padding:40px 24px;border-bottom:1px solid #f0e0e0;background:#fff}
+.section-title{font-size:12px;font-weight:700;letter-spacing:4px;color:#BD7B7B;text-align:center;margin-bottom:24px;text-transform:uppercase}
 
-/* sections */
-section{padding:36px 24px;border-bottom:1px solid #f0e0e0;background:#fff}
-.section-title{font-size:13px;font-weight:600;letter-spacing:3px;color:#BD7B7B;text-align:center;margin-bottom:20px}
+/* 모시는 글 */
+.invite-text{font-size:15px;line-height:2.4;text-align:center;color:#444;word-break:keep-all}
+.invite-names{margin-top:28px;text-align:center;font-size:14px;color:#666;line-height:2.2}
+.invite-names .name-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.invite-names .role{color:#999;font-size:12px;margin-right:2px}
+.contact-btn{display:block;width:fit-content;margin:24px auto 0;padding:12px 28px;background:#fff;border:1px solid #BD7B7B;border-radius:30px;color:#BD7B7B;font-size:14px;cursor:pointer;text-decoration:none}
 
-/* invite text */
-.invite-text{font-size:15px;line-height:2.2;text-align:center;color:#4a3828;word-break:keep-all}
-.invite-names{margin-top:24px;text-align:center;font-size:14px;color:#7a5030;line-height:2}
-.invite-names .name-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
-.invite-names .role{color:#a07050;font-size:12px}
-
-/* date */
+/* 행사일 */
 .date-section{background:#fff}
-.date-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 12px rgba(180,120,60,.08);text-align:center}
-.date-main{font-size:20px;font-weight:700;color:#5a3820;margin-bottom:4px}
-.date-sub{font-size:14px;color:#8a6040;margin-bottom:20px}
-.calendar{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px}
-.calendar th{padding:6px 0;color:#a07050;font-weight:600;font-size:12px}
+.date-card{background:#fff;border-radius:16px;padding:28px 20px;box-shadow:0 2px 16px rgba(0,0,0,.06);text-align:center}
+.date-main{font-size:18px;font-weight:700;color:#333;margin-bottom:4px}
+.date-sub{font-size:13px;color:#888;margin-bottom:24px}
+.calendar{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px}
+.calendar th{padding:8px 0;color:#aaa;font-weight:600;font-size:11px}
 .calendar th:first-child{color:#e05050}
 .calendar th:last-child{color:#5080e0}
-.calendar td{padding:6px 0;text-align:center;color:#5a3820}
+.calendar td{padding:8px 0;text-align:center;color:#555}
 .calendar td:first-child{color:#e05050}
 .calendar td:last-child{color:#5080e0}
-.calendar td.today{background:#BD7B7B;color:#fff!important;border-radius:50%;font-weight:700}
-.countdown{display:flex;justify-content:center;gap:12px;margin-top:4px}
+.calendar td.today{background:#BD7B7B;color:#fff!important;border-radius:50%;font-weight:700;width:32px;height:32px}
+.countdown{display:flex;justify-content:center;gap:12px;margin-top:8px}
 .countdown-item{text-align:center}
 .countdown-num{display:block;font-size:28px;font-weight:700;color:#BD7B7B;line-height:1}
-.countdown-label{font-size:11px;color:#a07050;margin-top:4px}
-.countdown-sep{font-size:24px;color:#BD7B7B;align-self:flex-start;padding-top:4px}
-.countdown-msg{margin-top:12px;font-size:13px;color:#8a6040}
+.countdown-label{font-size:10px;color:#aaa;margin-top:4px;text-transform:uppercase}
+.countdown-sep{font-size:22px;color:#BD7B7B;align-self:flex-start;padding-top:4px}
+.countdown-msg{margin-top:16px;font-size:13px;color:#888}
 .countdown-msg strong{color:#BD7B7B}
 
-/* map */
-.map-address{text-align:center;font-size:14px;color:#5a3820;line-height:1.8;margin-bottom:16px}
-.map-address strong{font-size:16px}
-.map-address .tel{color:#8a6040;font-size:13px}
-.map-placeholder{width:100%;height:200px;background:#e8ddd0;border-radius:12px;overflow:hidden;position:relative;margin-bottom:16px}
-.map-placeholder iframe{width:100%;height:100%;border:none;border-radius:12px}
-.map-nav-btns{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
-.map-nav-btn{display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;border:1px solid #ddd;background:#fff;font-size:13px;color:#5a3820;cursor:pointer;text-decoration:none}
-.map-nav-btn .dot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
-.dot-naver{background:#03c75a}
-.dot-tmap{background:#e8002d}
-.dot-kakao{background:#fee500;color:#3c1e1e!important}
+/* 오시는 길 */
+.map-address{text-align:center;font-size:14px;color:#444;line-height:1.8;margin-bottom:20px}
+.map-address strong{font-size:16px;display:block;margin-bottom:4px}
+.map-address .tel{color:#888;font-size:13px}
+.map-wrap{width:100%;height:220px;border-radius:12px;overflow:hidden;margin-bottom:20px}
+.map-wrap iframe{width:100%;height:100%;border:none}
+.map-nav-btns{display:flex;gap:10px;justify-content:center;margin-bottom:24px}
+.map-nav-btn{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;border:1px solid #e0e0e0;background:#fff;font-size:13px;color:#333;cursor:pointer;text-decoration:none}
+.map-nav-btn img{width:24px;height:24px;border-radius:4px}
 .transport-list{display:flex;flex-direction:column;gap:12px}
-.transport-item{display:flex;gap:12px;align-items:flex-start;background:#fdf6f6;border-radius:10px;padding:14px}
-.transport-icon{width:36px;height:36px;border-radius:50%;background:#f2d5d5;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.transport-info strong{display:block;font-size:14px;color:#5a3820;margin-bottom:4px}
-.transport-info p{font-size:13px;color:#8a6040;line-height:1.6}
+.transport-item{display:flex;gap:14px;align-items:flex-start;background:#fdf6f6;border-radius:12px;padding:16px}
+.transport-icon{width:40px;height:40px;border-radius:50%;background:#f2d5d5;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.transport-info strong{display:block;font-size:14px;color:#333;margin-bottom:4px}
+.transport-info p{font-size:13px;color:#777;line-height:1.7;margin:0}
 
-/* account */
+/* 마음 전하실 곳 */
 .account-section{background:#fdf6f6}
-.account-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(180,120,60,.08)}
-.account-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f0e4d4}
+.account-card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.account-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #f0e4d4}
 .account-row:last-child{border-bottom:none}
-.account-name{font-size:15px;font-weight:600;color:#5a3820}
-.account-bank{font-size:13px;color:#8a6040;margin-top:2px}
-.account-num{font-size:14px;color:#5a3820;font-family:monospace}
-.copy-btn{padding:6px 14px;border-radius:8px;border:1px solid #BD7B7B;background:#fff;color:#BD7B7B;font-size:12px;cursor:pointer}
-.copy-btn:active{background:#f2d5d5}
+.account-info .label{font-size:13px;color:#999}
+.account-info .name{font-size:15px;font-weight:700;color:#333}
+.account-info .bank{font-size:13px;color:#888;margin-top:2px}
+.account-info .num{font-size:14px;color:#333;font-family:monospace;margin-top:2px}
+.copy-btn{padding:8px 16px;border-radius:8px;border:1px solid #BD7B7B;background:#fff;color:#BD7B7B;font-size:12px;cursor:pointer;white-space:nowrap}
 
-/* letter */
-.letter-section{text-align:center}
-.letter-icon{font-size:40px;margin-bottom:12px}
-.letter-desc{font-size:14px;color:#7a5030;line-height:2;margin-bottom:20px}
-.btn-primary{display:inline-block;padding:13px 32px;background:linear-gradient(135deg,#BD7B7B,#d4a0a0);color:#fff;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(189,123,123,.35)}
+/* 감사편지 */
+.letter-section{text-align:center;background:#fff}
+.letter-section img{width:64px;margin-bottom:16px}
+.letter-desc{font-size:14px;color:#666;line-height:2.2;margin-bottom:24px}
+.btn-primary{display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#BD7B7B,#d4a0a0);color:#fff;border-radius:30px;font-size:15px;font-weight:600;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(189,123,123,.3)}
 
-/* gift */
-.gift-section{text-align:center}
-.gift-icon{font-size:40px;margin-bottom:12px}
-.gift-desc{font-size:14px;color:#7a5030;line-height:2;margin-bottom:20px}
-.btn-secondary{display:inline-block;padding:13px 32px;background:#fff;color:#BD7B7B;border-radius:30px;font-size:15px;font-weight:600;text-decoration:none;border:2px solid #BD7B7B;cursor:pointer}
+/* 참석여부 */
+.survey-section{text-align:center;background:#fdf6f6}
+.survey-desc{font-size:14px;color:#666;line-height:2.2;margin-bottom:24px}
+.btn-outline{display:inline-block;padding:14px 36px;background:#fff;color:#BD7B7B;border-radius:30px;font-size:15px;font-weight:600;border:2px solid #BD7B7B;cursor:pointer}
 
-/* share */
+/* 축하 선물 */
+.gift-section{text-align:center;background:#fff}
+.gift-section img{width:80px;margin-bottom:16px}
+.gift-desc{font-size:14px;color:#666;line-height:2;margin-bottom:24px}
+
+/* 공유 */
 .share-section{text-align:center;background:#fdf6f6}
 .share-btns{display:flex;gap:12px;justify-content:center}
-.share-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;border:1px solid #ddd;background:#fff;font-size:14px;color:#5a3820;cursor:pointer}
+.share-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;border:1px solid #e0e0e0;background:#fff;font-size:14px;color:#333;cursor:pointer}
 .kakao-share{background:#fee500;border-color:#fee500;color:#3c1e1e}
-.share-icon{font-size:18px}
+.share-btn img{width:20px;height:20px}
 
-/* contact */
-.contact-btn{display:block;width:fit-content;margin:20px auto 0;padding:12px 28px;background:#fff;border:1px solid #BD7B7B;border-radius:30px;color:#BD7B7B;font-size:14px;cursor:pointer;text-decoration:none}
+/* Footer */
+footer{text-align:center;padding:28px;font-size:11px;color:#bbb}
 
-/* footer */
-footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
-
-/* toast */
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(60,40,20,.85);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;opacity:0;transition:all .3s;pointer-events:none;z-index:9999}
+/* Toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(0,0,0,.75);color:#fff;padding:10px 24px;border-radius:20px;font-size:13px;opacity:0;transition:all .3s;pointer-events:none;z-index:9999}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* scroll reveal */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- ===== INTRO TYPING SCREEN ===== -->
-<div id="intro-screen">
-  <div class="intro-lines">
-    <div class="intro-line" id="tl1"></div>
-    <div class="intro-line" id="tl2"></div>
-    <div class="intro-line" id="tl3"></div>
-    <div class="intro-line sub" id="tl4"></div>
-  </div>
+<!-- ===== INTRO (shining) ===== -->
+<div id="intro">
+  <div class="shine"></div>
+  <div class="top-text">김덕례님의</div>
+  <div class="bottom-text">구순연에 초대합니다</div>
 </div>
 
-<!-- ===== INVITATION CONTENT ===== -->
-<div id="invitation">
+<!-- ===== CONTENT ===== -->
+<div id="content">
 
 <!-- Hero -->
 <div class="hero">
-  <h1>
-    김정숙님의<br>고희연에<br>초대합니다
-    <span>6월 13일 토요일 오후 1시</span>
-  </h1>
-  <div class="hero-venue">라마다 플라자 충장 호텔 3층 반르시엔</div>
+  <h1>김덕례님의<br>구순연에<br>초대합니다</h1>
+  <div class="date-info">6월 13일 토요일 오후 12시</div>
+  <div class="venue-info">라마다 플라자 충장 호텔 3층 반르시엔</div>
 </div>
 
 <!-- 모시는 글 -->
@@ -184,12 +180,14 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
     어머님의 칠순을 맞아<br>
     친지분들과 지인들을 모시고<br>
     기쁨을 나누고자 하오니<br>
-    참석하시어 자리를 빛내주시기 바랍니다.
+    부디 참석하시어 자리를 빛내주시기 바랍니다.
   </p>
   <div class="invite-names">
     <div class="name-row">
-      <span><span class="role">아들</span> 정인선</span>
-      <span><span class="role">며느리</span> 김한올</span>
+      <span><span class="role">사위</span>오형준</span>
+      <span><span class="role">딸</span>김도연</span>
+      <span><span class="role">아들</span>김성호</span>
+      <span><span class="role">며느리</span>박연지</span>
     </div>
   </div>
   <a href="tel:062-717-1080" class="contact-btn">📞 연락하기</a>
@@ -199,12 +197,10 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <section class="date-section reveal">
   <div class="section-title">행사일</div>
   <div class="date-card">
-    <div class="date-main">2026년 6월 13일 토요일 오후 1시</div>
+    <div class="date-main">2026년 6월 13일 토요일 오후 12시</div>
     <div class="date-sub">라마다 플라자 충장 호텔 3층 반르시엔</div>
     <table class="calendar">
-      <thead>
-        <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
-      </thead>
+      <thead><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>
       <tbody>
         <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
         <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td class="today">13</td></tr>
@@ -214,15 +210,15 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
       </tbody>
     </table>
     <div class="countdown">
-      <div class="countdown-item"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-d">--</span><span class="countdown-label">Days</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-item"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-h">--</span><span class="countdown-label">Hours</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-item"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-m">--</span><span class="countdown-label">Minutes</span></div>
       <span class="countdown-sep">:</span>
-      <div class="countdown-item"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-s">--</span><span class="countdown-label">Seconds</span></div>
     </div>
-    <div class="countdown-msg">김정숙님의 생신이 <strong id="cd-days-msg">--</strong>일 남았습니다</div>
+    <div class="countdown-msg">김덕례님의 생신이 <strong id="cd-msg">--</strong>일 남았습니다</div>
   </div>
 </section>
 
@@ -230,26 +226,32 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <section class="reveal">
   <div class="section-title">오시는 길</div>
   <div class="map-address">
-    <strong>라마다 플라자 충장 호텔 3층 반르시엔</strong><br>
-    광주광역시 동구 천변우로 369 3층<br>
+    <strong>라마다 플라자 충장 호텔 3층 반르시엔</strong>
+    광주광역시 동구 천변우로 369<br>
     <span class="tel">Tel. 062-717-1080</span>
   </div>
-  <div class="map-placeholder">
-    <iframe src="https://map.naver.com/p/embed?lat=35.1468&lng=126.9157&zoom=16&type=normal" title="라마다 플라자 충장 호텔 지도" allowfullscreen></iframe>
+  <div class="map-wrap">
+    <iframe src="https://map.naver.com/p/embed?lat=35.1477648397089&lng=126.91180051014&zoom=16&type=normal&pinTitle=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&pinType=SITE" title="지도" allowfullscreen></iframe>
   </div>
   <div class="map-nav-btns">
-    <a class="map-nav-btn" href="nmap://place?lat=35.1468&lng=126.9157&name=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&appname=birthday-card" target="_blank"><span class="dot dot-naver">N</span> 네이버지도</a>
-    <a class="map-nav-btn" href="tmap://route?goalname=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&goalx=126.9157&goaly=35.1468" target="_blank"><span class="dot dot-tmap">T</span> 티맵</a>
-    <a class="map-nav-btn" href="kakaomap://route?ep=35.1468,126.9157&by=CAR" target="_blank"><span class="dot dot-kakao">K</span> 카카오내비</a>
+    <a class="map-nav-btn" href="nmap://place?lat=35.1477648397089&lng=126.91180051014&name=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94" target="_blank">
+      <img src="_next/static/media/icon-naver-map.fce32daf.png" alt="네이버"> 네이버지도
+    </a>
+    <a class="map-nav-btn" href="tmap://route?goalname=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&goalx=126.91180051014&goaly=35.1477648397089" target="_blank">
+      <img src="_next/static/media/icon-tmap.50c7dcab.png" alt="티맵"> 티맵
+    </a>
+    <a class="map-nav-btn" href="kakaomap://route?ep=35.1477648397089,126.91180051014&by=CAR" target="_blank">
+      <img src="_next/static/media/icon-kakao-navi.f253ce67.png" alt="카카오"> 카카오내비
+    </a>
   </div>
   <div class="transport-list">
     <div class="transport-item">
       <div class="transport-icon">🚇</div>
-      <div class="transport-info"><strong>지하철</strong><p>광주 1호선 금남로4가역 3번출구 도보 5분</p></div>
+      <div class="transport-info"><strong>지하철</strong><p>광주 지하철1호선 금남로4가역 1번출구 직진 8분거리</p></div>
     </div>
     <div class="transport-item">
       <div class="transport-icon">🚌</div>
-      <div class="transport-info"><strong>버스</strong><p>충장로 정류소 하차</p></div>
+      <div class="transport-info"><strong>버스</strong><p>충장동행정복지센터 정류소 하차<br>640, 수완12, 지원45, 대촌170, 송안74번 버스</p></div>
     </div>
   </div>
 </section>
@@ -259,12 +261,13 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
   <div class="section-title">마음 전하실 곳</div>
   <div class="account-card">
     <div class="account-row">
-      <div>
-        <div class="account-name">본인 · 김정숙</div>
-        <div class="account-bank">신한은행</div>
-        <div class="account-num">110-320-123123</div>
+      <div class="account-info">
+        <div class="label">본인</div>
+        <div class="name">김덕례</div>
+        <div class="bank">신한은행</div>
+        <div class="num">110-320-123123</div>
       </div>
-      <button class="copy-btn" onclick="copyAccount('110-320-123123')">복사</button>
+      <button class="copy-btn" onclick="copyAccount('110-320-123123')">계좌번호 복사</button>
     </div>
   </div>
 </section>
@@ -272,124 +275,81 @@ footer{text-align:center;padding:24px;font-size:12px;color:#b09070}
 <!-- 감사편지 -->
 <section class="letter-section reveal">
   <div class="section-title">감사편지</div>
-  <div class="letter-icon">💌</div>
+  <img src="_next/static/media/icon-flower-2.f167326f.png" alt="">
   <p class="letter-desc">가족을 위하여 묵묵히 걸어오신 여정에<br>존경과 감사의 마음을 전하세요.</p>
   <button class="btn-primary" onclick="alert('편지쓰기 기능입니다.')">편지쓰기</button>
+</section>
+
+<!-- 참석여부 -->
+<section class="survey-section reveal">
+  <div class="section-title">참석여부</div>
+  <p class="survey-desc">
+    축하의 마음으로 참석해 주실<br>
+    모든 분을 정중히 모시고자 하오니,<br>
+    참석 여부를 알려주시면 감사하겠습니다.
+  </p>
+  <button class="btn-outline" onclick="alert('참석여부 전달 기능입니다.')">참석여부 전달하기</button>
 </section>
 
 <!-- 축하 선물 -->
 <section class="gift-section reveal">
   <div class="section-title">축하 선물 보내기</div>
-  <div class="gift-icon">🎁</div>
   <p class="gift-desc">축하의 마음을 전해보세요.</p>
-  <button class="btn-secondary" onclick="alert('선물 보내기 기능입니다.')">선물 보내기</button>
+  <img src="_next/static/media/icon-gift-flower.f2ce6502.png" alt="">
 </section>
 
 <!-- 공유 -->
 <section class="share-section reveal">
   <div class="section-title">공유하기</div>
   <div class="share-btns">
-    <button class="share-btn kakao-share" onclick="shareKakao()"><span class="share-icon">💬</span> 카카오톡 공유하기</button>
-    <button class="share-btn" onclick="copyLink()"><span class="share-icon">🔗</span> 링크 복사하기</button>
+    <button class="share-btn kakao-share" onclick="shareKakao()">
+      <img src="_next/static/media/icon-kakao.8fc69634.png" alt=""> 카카오톡 공유하기
+    </button>
+    <button class="share-btn" onclick="copyLink()">🔗 링크 복사하기</button>
   </div>
 </section>
 
 <footer>niftyhands Copyright(C) niftyhands. All Rights Reserved.</footer>
 
-</div><!-- /invitation -->
+</div><!-- /content -->
 
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  /* ── Typing engine ── */
-  function typeText(el,text,speed,cb){
-    el.classList.add('show');
-    var i=0;
-    var cursor=document.createElement('span');
-    cursor.className='typing-cursor';
-    el.appendChild(cursor);
-    var timer=setInterval(function(){
-      if(i<text.length){
-        cursor.before(document.createTextNode(text[i]));
-        i++;
-      }else{
-        clearInterval(timer);
-        cursor.remove();
-        if(cb) setTimeout(cb,300);
-      }
-    },speed);
-  }
-
-  var lines=[
-    {id:'tl1',text:'김정숙님의',speed:120},
-    {id:'tl2',text:'고희연에',speed:120},
-    {id:'tl3',text:'초대합니다',speed:120},
-    {id:'tl4',text:'2026년 6월 13일 토요일 오후 1시',speed:60}
-  ];
-
-  function runLine(idx){
-    if(idx>=lines.length){
-      setTimeout(showInvitation,800);
-      return;
-    }
-    var l=lines[idx];
-    typeText(document.getElementById(l.id),l.text,l.speed,function(){runLine(idx+1)});
-  }
-
-  function showInvitation(){
-    var intro=document.getElementById('intro-screen');
+  /* ── Intro animation ── */
+  var intro = document.getElementById('intro');
+  setTimeout(function(){ intro.classList.add('active'); }, 300);
+  setTimeout(function(){
     intro.classList.add('hide');
-    var inv=document.getElementById('invitation');
-    inv.classList.add('show');
-    setTimeout(function(){intro.style.display='none'},900);
-  }
-
-  setTimeout(function(){runLine(0)},500);
+    document.getElementById('content').classList.add('show');
+    setTimeout(function(){ intro.style.display='none'; }, 1000);
+  }, 3500);
 
   /* ── Scroll reveal ── */
-  var observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting) e.target.classList.add('visible');
-    });
-  },{threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 
   /* ── Countdown ── */
-  function updateCountdown(){
-    var target=new Date('2026-06-13T13:00:00+09:00');
-    var now=new Date();
-    var diff=target-now;
-    if(diff<=0){
-      document.getElementById('cd-days').textContent='0';
-      document.getElementById('cd-hours').textContent='00';
-      document.getElementById('cd-mins').textContent='00';
-      document.getElementById('cd-secs').textContent='00';
-      document.getElementById('cd-days-msg').textContent='0';
-      return;
-    }
-    var d=Math.floor(diff/(1000*60*60*24));
-    var h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    var m=Math.floor((diff%(1000*60*60))/(1000*60));
-    var s=Math.floor((diff%(1000*60))/1000);
-    document.getElementById('cd-days').textContent=d;
-    document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
-    document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
-    document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
-    document.getElementById('cd-days-msg').textContent=d;
+  function tick(){
+    var t = new Date('2026-06-13T12:00:00+09:00') - new Date();
+    if(t<=0){ document.getElementById('cd-d').textContent='0'; document.getElementById('cd-h').textContent='00'; document.getElementById('cd-m').textContent='00'; document.getElementById('cd-s').textContent='00'; document.getElementById('cd-msg').textContent='0'; return; }
+    var d=Math.floor(t/864e5), h=Math.floor(t%864e5/36e5), m=Math.floor(t%36e5/6e4), s=Math.floor(t%6e4/1e3);
+    document.getElementById('cd-d').textContent=d;
+    document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+    document.getElementById('cd-msg').textContent=d;
   }
-  updateCountdown();
-  setInterval(updateCountdown,1000);
+  tick(); setInterval(tick,1000);
 })();
 
-/* ── Utilities ── */
-function copyAccount(num){navigator.clipboard.writeText(num).then(function(){showToast('계좌번호가 복사되었습니다.')})}
+function copyAccount(n){navigator.clipboard.writeText(n).then(function(){showToast('계좌번호가 복사되었습니다.')})}
 function copyLink(){navigator.clipboard.writeText(location.href).then(function(){showToast('링크가 복사되었습니다.')})}
-function shareKakao(){
-  if(navigator.share){navigator.share({title:'김정숙님의 고희연에 초대합니다',text:'2026년 6월 13일 토요일 오후 1시 라마다 플라자 충장 호텔 3층 반르시엔',url:location.href})}
-  else{copyLink()}
-}
-function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
+function shareKakao(){if(navigator.share){navigator.share({title:'김덕례님의 구순연에 초대합니다',text:'2026년 6월 13일 토요일 오후 12시 라마다 플라자 충장 호텔 3층 반르시엔',url:location.href})}else{copyLink()}}
+function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2500)}
 </script>
 </body>
 </html>

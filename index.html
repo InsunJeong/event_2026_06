@@ -233,13 +233,13 @@ footer{text-align:center;padding:28px;font-size:11px;color:#bbb}
   </div>
   <div class="map-wrap" id="naverMap"></div>
   <div class="map-nav-btns">
-    <a class="map-nav-btn" href="nmap://place?lat=35.1477648397089&lng=126.91180051014&name=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94" target="_blank">
+    <a class="map-nav-btn" href="nmap://place?lat=35.1477669796096&lng=126.911768353769&name=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94" target="_blank">
       <img src="_next/static/media/icon-naver-map.fce32daf.png" alt="네이버"> 네이버지도
     </a>
-    <a class="map-nav-btn" href="tmap://route?goalname=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&goalx=126.91180051014&goaly=35.1477648397089" target="_blank">
+    <a class="map-nav-btn" href="tmap://route?goalname=%EB%9D%BC%EB%A7%88%EB%8B%A4%ED%94%8C%EB%9D%BC%EC%9E%90%EC%B6%A9%EC%9E%A5%ED%98%B8%ED%85%94&goalx=126.911768353769&goaly=35.1477669796096" target="_blank">
       <img src="_next/static/media/icon-tmap.50c7dcab.png" alt="티맵"> 티맵
     </a>
-    <a class="map-nav-btn" href="kakaomap://route?ep=35.1477648397089,126.91180051014&by=CAR" target="_blank">
+    <a class="map-nav-btn" href="kakaomap://route?ep=35.1477669796096,126.911768353769&by=CAR" target="_blank">
       <img src="_next/static/media/icon-kakao-navi.f253ce67.png" alt="카카오"> 카카오내비
     </a>
   </div>
@@ -313,7 +313,7 @@ function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.c
 /* ── Naver Map ── */
 function initMap(){
   if(typeof naver==='undefined'||!naver.maps) return;
-  var lat=35.1477648397089, lng=126.91180051014;
+  var lat=35.1477669796096, lng=126.911768353769;
   var pos=new naver.maps.LatLng(lat,lng);
   var map=new naver.maps.Map('naverMap',{center:pos,zoom:16,zoomControl:true,zoomControlOptions:{position:naver.maps.Position.TOP_RIGHT}});
   new naver.maps.Marker({position:pos,map:map});
